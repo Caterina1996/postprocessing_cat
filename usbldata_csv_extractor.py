@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rosbag
 import pandas as pd
@@ -17,7 +17,8 @@ import numpy as np
 topics=["/xiroi/usbllong",
         "/turbot/navigator/navigation",
         "/xiroi/navigator/navigation",
-        "/turbot/modem_delayed"]
+        "/turbot/modem_delayed",
+        "/turbot/modem_raw"]
 
 class Timestamp:
     def __init__(self):
@@ -146,6 +147,7 @@ def parse_bagfile(bagfile, force_overwrite):
     nav_status_tu = []
     USBllongs=[]
     modem_delayed=[]
+    modem_raw=[]
     nav_status_xi = []
     
     print("Opening bagfile. This can take a while...")
@@ -153,10 +155,18 @@ def parse_bagfile(bagfile, force_overwrite):
 
     for topic, msg, t in bag.read_messages(topics=topics):
         json_data = None
-
+        if "raw" in str(topic):
+            print("topic is:",topic )
+            print("_____________________________s")
+        
         if "/xiroi/usbllong" in topic:
             x = get_UBL_lon(msg)
             USBllongs.append(x)
+
+        elif "/turbot/modem_raw" in topic:
+            print("MODEM RAAAAAAAAAAAAAW")
+            x = get_modem_info(msg)
+            modem_raw.append(x)
 
         elif "/turbot/modem_delayed" in topic:
             x = get_modem_info(msg)
@@ -180,22 +190,12 @@ def parse_bagfile(bagfile, force_overwrite):
 
 
 #BAG PARSED CONVERT TO CSV
-    #USBLlong--------------------------------
-    USBLlong_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in USBllongs]
-    usbllong_X= [x.X for x in USBllongs]
-    usbllong_Y= [x.Y for x in USBllongs]
-    usbllong_Z= [x.Z for x in USBllongs]
-    usbllong_N= [x.N for x in USBllongs]
-    usbllong_E= [x.E for x in USBllongs]
-    usbllong_roll= [x.roll for x in USBllongs]
-    usbllong_pitch= [x.pitch for x in USBllongs]
-    usbllong_yaw= [x.yaw for x in USBllongs]
 
     # data_list=[USBLlong_t,usbllong_X,usbllong_Y,usbllong_Z,usbllong_N,usbllong_E,usbllong_roll,usbllong_pitch,usbllong_yaw]
     # header=["USBLlong_t","usbllong_X","usbllong_Y","usbllong_Z","usbllong_N","usbllong_roll","usbllong_pitch","usbllong_yaw"]
-    data_dict={"a_USBLlong_t":USBLlong_t,"usbllong_X":usbllong_X,"usbllong_Y":usbllong_Y,"usbllong_Z":usbllong_Z,
-    "usbllong_N":usbllong_N,"usbllong_roll":usbllong_roll,"usbllong_pitch":usbllong_pitch,"usbllong_yaw":usbllong_yaw}
-    export_to_csv(data_dict,"/USBLlon.csv",bagfile)
+    # data_dict={"a_USBLlong_t":USBLlong_t,"usbllong_X":usbllong_X,"usbllong_Y":usbllong_Y,"usbllong_Z":usbllong_Z,
+    # "usbllong_N":usbllong_N,"usbllong_roll":usbllong_roll,"usbllong_pitch":usbllong_pitch,"usbllong_yaw":usbllong_yaw}
+    # export_to_csv(data_dict,"/USBLlon.csv",bagfile)
 
     #Modem delayed-----------------------------------------------------
     modem_delayed_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in modem_delayed]
@@ -217,6 +217,30 @@ def parse_bagfile(bagfile, force_overwrite):
     "modem_delayed_ori_W":modem_delayed_ori_W}
     
     export_to_csv(data_dict,"/modem_delayed.csv",bagfile)
+
+
+
+    #Modem raw-----------------------------------------------------
+    modem_raw_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in modem_raw]
+
+    modem_raw_X= [x.position_x for x in modem_raw]
+    modem_raw_Y= [x.position_y for x in modem_raw]
+    modem_raw_Z= [x.position_z for x in modem_raw]
+
+    modem_raw_ori_X= [x.orientation_x for x in modem_raw]
+    modem_raw_ori_Y= [x.orientation_y for x in modem_raw]
+    modem_raw_ori_Z= [x.orientation_z for x in modem_raw]
+    modem_raw_ori_W= [x.orientation_w for x in modem_raw]
+
+    # data_list=[modem_delayed_t,modem_delayed_X,modem_delayed_Y,modem_delayed_Z,modem_delayed_ori_X,modem_delayed_ori_Y,modem_delayed_ori_Z,modem_delayed_ori_W]
+    # header=["modem_delayed_t","modem_delayed_X","modem_delayed_Y","modem_delayed_Z","modem_delayed_ori_X","modem_delayed_ori_Y","modem_delayed_ori_Z","modem_delayed_ori_W"]
+
+    data_dict={"a_modem_raw_t":modem_raw_t,"modem_raw_X":modem_raw_X,"modem_raw_Y": modem_raw_Y, "modem_raw_Z":modem_raw_Z,
+    "modem_raw_ori_X":modem_raw_ori_X,"modem_raw_ori_Y":modem_raw_ori_Y,"modem_raw_ori_Z":modem_raw_ori_Z,
+    "modem_raw_ori_W":modem_raw_ori_W}
+    
+    export_to_csv(data_dict,"/modem_raw.csv",bagfile)
+
 
     #Nav_status turbot-------------------------------------------
     nav_status_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in nav_status_tu]
@@ -265,6 +289,38 @@ def parse_bagfile(bagfile, force_overwrite):
     "nav_status_roll":nav_status_roll,"nav_status_pitch":nav_status_pitch,"nav_status_yaw":nav_status_yaw}
 
     export_to_csv(data_dict,"/nav_status_xi.csv",bagfile)
+
+    #USBLlong--------------------------------
+    USBLlong_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in USBllongs]
+    usbllong_X= [x.X for x in USBllongs]
+    usbllong_Y= [x.Y for x in USBllongs]
+    usbllong_Z= [x.Z for x in USBllongs]
+
+    usbllong_N= [x.N for x in USBllongs]
+    usbllong_E= [x.E for x in USBllongs]
+    usbllong_D= [x.D for x in USBllongs]
+
+    usbllong_roll= [x.roll for x in USBllongs]
+    usbllong_pitch= [x.pitch for x in USBllongs]
+    usbllong_yaw= [x.yaw for x in USBllongs]
+
+    # data_list=[USBLlong_t,usbllong_X,usbllong_Y,usbllong_Z,usbllong_N,usbllong_E,usbllong_roll,usbllong_pitch,usbllong_yaw]
+    # header=["USBLlong_t","usbllong_X","usbllong_Y","usbllong_Z","usbllong_N","usbllong_roll","usbllong_pitch","usbllong_yaw"]
+    data_dict={"a_USBLlong_t":USBLlong_t, "usbllong_X":usbllong_X,"usbllong_Y":usbllong_Y,"usbllong_Z":usbllong_Z,
+    "usbllong_N":usbllong_N,"usbllong_E":usbllong_E,"usbllong_D":usbllong_D,"usbllong_roll":usbllong_roll,"usbllong_pitch":usbllong_pitch,"usbllong_yaw":usbllong_yaw}
+    export_to_csv(data_dict,"/USBLlon.csv",bagfile)
+
+    #Modem delayed-----------------------------------------------------
+    modem_delayed_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in modem_delayed]
+
+    modem_delayed_X= [x.position_x for x in modem_delayed]
+    modem_delayed_Y= [x.position_y for x in modem_delayed]
+    modem_delayed_Z= [x.position_z for x in modem_delayed]
+
+    modem_delayed_ori_X= [x.orientation_x for x in modem_delayed]
+    modem_delayed_ori_Y= [x.orientation_y for x in modem_delayed]
+    modem_delayed_ori_Z= [x.orientation_z for x in modem_delayed]
+    modem_delayed_ori_W= [x.orientation_w for x in modem_delayed]
 
 
 def export_to_csv(data_dict,output_dir_name,bagfile):
