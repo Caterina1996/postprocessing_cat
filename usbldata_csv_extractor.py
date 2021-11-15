@@ -155,16 +155,12 @@ def parse_bagfile(bagfile, force_overwrite):
 
     for topic, msg, t in bag.read_messages(topics=topics):
         json_data = None
-        if "raw" in str(topic):
-            print("topic is:",topic )
-            print("_____________________________s")
-        
+      
         if "/xiroi/usbllong" in topic:
             x = get_UBL_lon(msg)
             USBllongs.append(x)
 
         elif "/turbot/modem_raw" in topic:
-            print("MODEM RAAAAAAAAAAAAAW")
             x = get_modem_info(msg)
             modem_raw.append(x)
 
