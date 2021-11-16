@@ -15,15 +15,21 @@ import plotly.graph_objects as go
 import numpy as np
 
 topics=["/xiroi/usbllong",
+        "/xiroi/controller/thruster_setpoints",
         "/turbot/navigator/navigation",
         "/xiroi/navigator/navigation",
         "/turbot/modem_delayed",
         "/turbot/modem_raw"]
-
 class Timestamp:
     def __init__(self):
         self.epoch_timestamp = None
 
+class Setpoints(Timestamp):
+    def __init__(self):
+        Timestamp.__init__(self)
+        self.setpoint0 = None
+        self.setpoint1 = None
+        # self.setpoint2 = None
 class Nav_status(Timestamp):
     def __init__(self):
         Timestamp.__init__(self)
@@ -42,7 +48,6 @@ class Nav_status(Timestamp):
         self.orientation_roll = None
         self.orientation_pitch = None
         self.orientation_yaw = None
-
 
 class USBLlong(Timestamp):
     def __init__(self):
@@ -74,6 +79,14 @@ def stamp_to_epoch(stamp):
     s = float(stamp.secs)
     ns = float(stamp.nsecs)
     return s + ns * 1e-9
+
+def get_setpoints_info(msg):
+    x = Setpoints()
+    x.epoch_timestamp = stamp_to_epoch(msg.header.stamp)
+    x.setpoint0 = float(msg.setpoints[0])
+    x.setpoint1 = float(msg.setpoints[1])
+    # x.setpoint2 = float(msg.setpoints[2])
+    return x
 
 def get_modem_info(msg):
     x=Modem()
@@ -149,6 +162,7 @@ def parse_bagfile(bagfile, force_overwrite):
     modem_delayed=[]
     modem_raw=[]
     nav_status_xi = []
+    setpoints_list_xi=[]
     
     print("Opening bagfile. This can take a while...")
     bag = rosbag.Bag(bagfile)
@@ -159,6 +173,10 @@ def parse_bagfile(bagfile, force_overwrite):
         if "/xiroi/usbllong" in topic:
             x = get_UBL_lon(msg)
             USBllongs.append(x)
+
+        elif "/xiroi/controller/thruster_setpoints" in topic:
+            x= get_setpoints_info(msg)
+            setpoints_list_xi.append(x)
 
         elif "/turbot/modem_raw" in topic:
             x = get_modem_info(msg)
@@ -192,6 +210,21 @@ def parse_bagfile(bagfile, force_overwrite):
     # data_dict={"a_USBLlong_t":USBLlong_t,"usbllong_X":usbllong_X,"usbllong_Y":usbllong_Y,"usbllong_Z":usbllong_Z,
     # "usbllong_N":usbllong_N,"usbllong_roll":usbllong_roll,"usbllong_pitch":usbllong_pitch,"usbllong_yaw":usbllong_yaw}
     # export_to_csv(data_dict,"/USBLlon.csv",bagfile)
+
+    #SETPOINTS XIROI-----------------------------------------------------------------------
+    a_setpoints_t = [
+        datetime.datetime.utcfromtimestamp(x.epoch_timestamp)
+        for x in setpoints_list_xi
+    ]
+    setpoints_0 = [x.setpoint0 for x in setpoints_list_xi]
+    setpoints_1 = [x.setpoint1 for x in setpoints_list_xi]
+    # setpoints_2 = [x.setpoint2 for x in setpoints_list]
+
+
+    data_dict={"a_setpoints_t":a_setpoints_t,"setpoint_0":setpoints_0,"setpoint_1": setpoints_1}
+    
+    export_to_csv(data_dict,"/xiroi_setpoints.csv",bagfile)
+    
 
     #Modem delayed-----------------------------------------------------
     modem_delayed_t = [datetime.datetime.utcfromtimestamp(x.epoch_timestamp)for x in modem_delayed]
