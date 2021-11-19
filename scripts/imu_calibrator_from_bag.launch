@@ -1,0 +1,79 @@
+<launch> 
+	<!-- <param name="use_sim_time" value="true"/> -->
+
+	<arg name="rate" default="5.0" />
+
+    <arg name="enableRobotArchitecture" default="true"/>
+        <!-- Params -->
+    <arg name="place"                   default="cabrera_santa_maria.yaml"/>
+
+    <arg name="robot_name"              default="xiroi"/>
+    <!-- <arg name="joystickDevice" default="usb-Logitech_Wireless_Gamepad_F710_BB9796E6-joystick"/> -->
+    <arg name="cola2_nav"               default="false"/>
+
+    <!-- Core -->
+    <arg name="enableSafety" default="false"/>
+    <!-- Payload -->
+    <arg name="enableUSBLloc"  default="false"/>
+    <!-- Interfaces -->
+    <arg name="enableRviz" default="false"/>
+    <arg name="enableIqua" default="false"/>
+
+    <!-- Topics -->
+	<arg name="topics"   default="  /xiroi/imu/rpy/filtered                                
+                                    /xiroi/imu/rpy/raw                                  
+                                    /xiroi/sensors/imu                                                      
+                                    /xiroi/sensors/imu_mag           
+                                    /xiroi/sensors/imu_raw                                                    
+                                    /xiroi/sensors/imu_raw_driver                                                         
+                                    /xiroi/sensors/imu_raw_filtered                                       
+                                    /xiroi/sensors/imu_raw_filtered_calibrated 
+									/turbot/adis_imu/data
+									/turbot/adis_imu/data_fast
+									/turbot/adis_imu/depth
+									/turbot/adis_imu/depth_fast
+									/turbot/adis_imu/fluid_pressure
+									/turbot/adis_imu/fluid_pressure_fast
+									/turbot/adis_imu/imu_data_fast
+									/turbot/adis_imu/mag_data_fast"/> 
+
+
+    <!-- Sparse E diag 20_09 grassmap -->
+	<arg name="bagfile" default="/home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-10-14-30_0.bag
+                                 /home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-10-39-01_0.bag
+                                 /home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-10-55-49_0.bag
+                                 /home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-11-14-44_0.bag
+                                 /home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-11-26-41_0.bag
+                                 /home/uib/bagfiles/Grassmap/20_09/xiroi_bagfiles_sparse_Ediag/xiroi_topics_2021-09-20-11-31-04_0.bag"/>
+
+	<!-- arg clock clock -r 0.8  -->
+	<node pkg="rosbag" type="play" name="player" args="-d 1 -r $(arg rate) $(arg bagfile) --topics $(arg topics)" required="true" />
+
+    <!-- ROBOT -->
+    <include file="$(find cola2_xiroi)/launch/robot.launch">
+        <arg name="place" value="$(arg place)"/>
+        <arg name="robot_name" value="$(arg robot_name)"/>
+        <arg name="enableSafety" value="$(arg enableSafety)"/>
+        <arg name="openLoopTeleoperation" value="false"/>
+        <arg name="enableIqua" value="$(arg enableIqua)"/>
+        <arg name="sim" value="true"/>
+        <arg name="enableThrusters" value="false"/>
+        <arg name="enableATX" default="false"/>
+        <arg name="enableBB2wide" default="false"/>
+        <arg name="enableBB2narrow" default="false"/>
+        <arg name="enableUSBL" value="false"/>
+        <arg name="enableCH3" value="false"/>
+    </include>
+
+    <!-- imu calibration  -->
+    <group ns="$(arg robot_name)">
+        <rosparam command="load" file="$(find cola2_xiroi)/config/imu_angle_estimator.yaml"/>
+        <node name="imu_angle_estimator" type="imu_angle_estimator.py" pkg="cola2_xiroi" output="screen">
+            <remap from="imu" to="sensors/imu_raw"/>
+            <remap from="mag" to="sensors/imu_mag"/>         
+        </node>
+    </group>
+
+</launch>
+
+   
