@@ -1,0 +1,731 @@
+actuators_485:
+  sp_baud_rate: 57600
+  sp_char_size: 8
+  sp_flow_control: NONE
+  sp_parity: NONE
+  sp_path: /dev/ttyS7
+  sp_stop_bits: 1
+  thrusters:
+    addresses: [164, 10, 80]
+    limiter: [0.6, 1.0, 1.0]
+    max_step: 0.1
+    request_info: true
+    signs: [1, -1, 1]
+    symmetric: true
+adis_imu:
+  dec_rate: 19
+  depth_correction: -0.8
+  depth_covariance: 0.2
+  depth_filter_size: 7
+  g_acceleration: 9.80665
+  max_pressure: 30.0
+  min_pressure: 0.0
+  serial_port: {baud_rate: 57600, char_size: 8, flow_control: NONE, parity: NONE,
+    path: /dev/ttyS8, stop_bits: 1, timeout: 1000}
+  water_density: 1030.0
+altitude_aggregator:
+  dvl_covariance: 0.2
+  echo_covariance: 2.0
+  echo_filter: {num_samples_not_published: 15, range_percentage: 20, sample_vector_size: 20}
+  visual_covariance: 2.0
+battery_control_board:
+  check_water_external: false
+  serial_port: {baud_rate: 19200, path: /dev/ttyS9}
+captain: {controlled_surface_depth: 0.0, max_distance_to_waypoint: 100.0, mission_path: /home/user/turbot_ws/src/turbot_stack/cola2_turbot,
+  vehicle_config_launch_mission_package: cola2_turbot}
+controller:
+  TCM: [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, -0.16783, 0.16783]
+  enable_thrusters: true
+  max_force_thruster_negative: 100.0
+  max_force_thruster_positive: 100.0
+  max_velocity_pitch: 0.0
+  max_velocity_roll: 0.0
+  max_velocity_x: 0.4
+  max_velocity_y: 0.0
+  max_velocity_yaw: 0.3
+  max_velocity_z: 0.3
+  max_wrench_Pitch: 17.15
+  max_wrench_Roll: 3.66
+  max_wrench_X: 154.0
+  max_wrench_Y: 0.0
+  max_wrench_Yaw: 14.43
+  max_wrench_Z: 30.0
+  n_dofs: 6
+  n_thrusters: 3
+  p_heave_fff: 0.0
+  p_heave_i_limit: 0.0
+  p_heave_kp: 1.2
+  p_heave_td: 0.0
+  p_heave_ti: 0.0
+  p_pitch_fff: 0.0
+  p_pitch_i_limit: 0.0
+  p_pitch_kp: 0.0
+  p_pitch_td: 0.0
+  p_pitch_ti: 0.0
+  p_roll_fff: 0.0
+  p_roll_i_limit: 0.0
+  p_roll_kp: 0.0
+  p_roll_td: 0.0
+  p_roll_ti: 0.0
+  p_surge_fff: 0.0
+  p_surge_i_limit: 0.0
+  p_surge_kp: 0.0
+  p_surge_td: 0.0
+  p_surge_ti: 0.0
+  p_sway_fff: 0.0
+  p_sway_i_limit: 0.0
+  p_sway_kp: 0.0
+  p_sway_td: 0.0
+  p_sway_ti: 0.0
+  p_yaw_fff: 0.0
+  p_yaw_i_limit: 0.0
+  p_yaw_kp: 0.25
+  p_yaw_td: 2.0
+  p_yaw_ti: 0.0
+  period: 0.1
+  poly_heave_A: 0.0
+  poly_heave_B: 4.0
+  poly_heave_C: 250.0
+  poly_heave_percentatge: 1.0
+  poly_pitch_A: 0.0
+  poly_pitch_B: 0.0
+  poly_pitch_C: 0.0
+  poly_pitch_percentatge: 0.0
+  poly_roll_A: 0.0
+  poly_roll_B: 0.0
+  poly_roll_C: 0.0
+  poly_roll_percentatge: 0.0
+  poly_surge_A: 0.0
+  poly_surge_B: 0.0
+  poly_surge_C: 25.0
+  poly_surge_percentatge: 1.0
+  poly_sway_A: 0.0
+  poly_sway_B: 0.0
+  poly_sway_C: 0.0
+  poly_sway_percentatge: 0.0
+  poly_yaw_A: 0.0
+  poly_yaw_B: 0.0
+  poly_yaw_C: 10.8
+  poly_yaw_percentatge: 1.0
+  t_heave_fff: 0.05
+  t_heave_i_limit: 0.1
+  t_heave_kp: 3.0
+  t_heave_td: 0.0
+  t_heave_ti: 20.0
+  t_pitch_fff: 0.0
+  t_pitch_i_limit: 1.0
+  t_pitch_kp: 0.0
+  t_pitch_td: 0.0
+  t_pitch_ti: 0.0
+  t_roll_fff: 0.0
+  t_roll_i_limit: 1.0
+  t_roll_kp: 0.0
+  t_roll_td: 0.0
+  t_roll_ti: 0.0
+  t_surge_fff: 0.0
+  t_surge_i_limit: 0.25
+  t_surge_kp: 0.25
+  t_surge_td: 0.0
+  t_surge_ti: 20.0
+  t_sway_fff: 0.0
+  t_sway_i_limit: 1.0
+  t_sway_kp: 0.0
+  t_sway_td: 0.0
+  t_sway_ti: 0.0
+  t_yaw_fff: 0.0
+  t_yaw_i_limit: 0.15
+  t_yaw_kp: 2.5
+  t_yaw_td: 0.0
+  t_yaw_ti: 8.0
+  thruster_1_max_force_negative: 28.5
+  thruster_1_max_force_positive: 55.0
+  thruster_1_poly_negative: [0.022, 0.176, -0.0261, 0.00199, -7.026e-05, 9.26e-07]
+  thruster_1_poly_positive: [0.0499, 0.0701, -0.00581, 0.000247, -4.67e-06, 3.25e-08]
+  thruster_2_max_force_negative: 30.0
+  thruster_2_max_force_positive: 71.5
+  thruster_2_poly_negative: [0.0772, 0.1186, -0.0139, 0.00092, -2.81e-05, 3.22e-07]
+  thruster_2_poly_positive: [0.06815, 0.05144, -0.00278, 8.48e-05, -1.18e-06, 6.12e-09]
+  thruster_3_max_force_negative: 30.0
+  thruster_3_max_force_positive: 71.5
+  thruster_3_poly_negative: [0.0772, 0.1186, -0.0139, 0.00092, -2.81e-05, 3.22e-07]
+  thruster_3_poly_positive: [0.06815, 0.05144, -0.00278, 8.48e-05, -1.18e-06, 6.12e-09]
+  thruster_distance_yaw: 0.51
+default_param_handler: {config_pkg: cola2_turbot}
+diagnostic_aggregator:
+  analyzers:
+    control:
+      name: [controller, teleoperation, captain, actuators_485, 'joystick: Joystick
+          Driver Status']
+      path: control
+      type: diagnostic_aggregator/GenericAnalyzer
+    navigation:
+      name: [nmea_gps, teledyne_explorer_dvl, adis_imu, navigator]
+      path: navigation
+      type: diagnostic_aggregator/GenericAnalyzer
+    safety:
+      name: [emus_bms, virtual_cage, safe_depth_altitude, cola2_watchdog, safety_supervisor,
+        evologics_modem, vehicle_status_parser, computer_logger, battery_control_board,
+        s2_mon_control_board]
+      path: safety
+      type: diagnostic_aggregator/GenericAnalyzer
+  base_path: ''
+  pub_rate: 2.0
+evologics:
+  acoustic: {cluster_size: 4, gain: 0, packet_time: 600, retry_count: 3, retry_timeout: 1000,
+    source_level: 0}
+  config_srv_dir: /home/user/turbot_ws/src/turbot_stack/cola2_turbot/config/evologics/acoustic_services.yaml
+  driver: {modem_pos_timeout: 0.3, physical_interface_timeout: 0.1, response_timeout: 2.0,
+    set_initialization_params: true, wait_for_service: false}
+  modem: {address: /dev/ttyS11, id: 2, loop_period: 0.1}
+  usbl: {address: '192.168.1.245:9200', id: 1, loop_period: 0.02}
+frames:
+  base_link: turbot/base_link
+  map: world_ned
+  odom: turbot/odom
+  sensors: {depth: turbot/depth, dvl: turbot/dvl, dvl_altitude: turbot/dvl_altitude,
+    echosounder: turbot/echosounder, gps: turbot/gps, imu: turbot/imu, imu_r: turbot/imu_filter,
+    laser: turbot/laser, modem: turbot/modem, origin_suffix: _origin, sonar: turbot/sonar,
+    stereo_camera: turbot/stereo_down, stereo_camera_optical: turbot/stereo_down/left_optical,
+    usbl: usbl}
+imagenex_echosounder_down: {absorption: 20, data_points: 50, delay: 2, devname: /dev/serial/by-id/usb-FTDI_UT232R_FT2D3911-if00-port0,
+  fov: 0.1745329252, frame_id: echosounder, gain: 14, idle_time: 0.75, num_samples_not_published: 15,
+  profile: 0, profile_maximum_range: 10, profile_minimum_range: 0.5, pulse_length: 100,
+  range_percentage: 20, sample_vector_size: 20, timeoutSerial: 1}
+imu_angle_estimator:
+  frame_id: imu_filter
+  hard_iron:
+  - [-0.00343533557647]
+  - [0.0013523858344]
+  - [-0.0817587718453]
+  max_gyro_bias_buffer_size: 18000
+  merging_filter_coefficient: 0.995
+  soft_iron:
+  - [1.10018002602, 5.67998269777e-05, 0.00184820863523]
+  - [5.67998269777e-05, 1.0000000322, 1.04789282727e-06]
+  - [0.00184820863523, 1.04789282727e-06, 1.00003409737]
+master_discovery: {mcast_group: 224.0.0.1}
+master_sync:
+  ignore_nodes: [/rosout, /*master_sync* node, remote /*master_discovery* node, /*node_manager,
+    /*zeroconf, /robot_state_publisher_gs, /robot_state_publisher_robot, /turbot/rosbridge_tcp,
+    /turbot/rosbridge_websocket]
+  sync_services: [/turbot/captain/disable_all_and_set_idle, /turbot/captain/disable_all_keep_positions,
+    /turbot/captain/disable_external_mission, /turbot/captain/disable_goto, /turbot/captain/disable_keep_position,
+    /turbot/captain/disable_mission, /turbot/captain/disable_safety_keep_position,
+    /turbot/captain/enable_default_mission_non_block, /turbot/captain/enable_external_mission,
+    /turbot/captain/enable_goto, /turbot/captain/enable_keep_position_holonomic, /turbot/captain/enable_keep_position_non_holonomic,
+    /turbot/captain/enable_mission, /turbot/captain/enable_safety_keep_position, /turbot/captain/get_loggers,
+    /turbot/captain/set_logger_level, /turbot/controller/disable_pose_controller,
+    /turbot/controller/disable_thrusters, /turbot/controller/disable_velocity_controller,
+    /turbot/controller/enable_pose_controller, /turbot/controller/enable_thrusters,
+    /turbot/controller/enable_velocity_controller, /turbot/imu_angle_estimator/calibrate_magnetometer,
+    /turbot/imu_angle_estimator/disable_magnetometer, /turbot/imu_angle_estimator/enable_magnetometer,
+    /turbot/imu_angle_estimator/freeze_gyro_bias, /turbot/imu_angle_estimator/reload_configuration,
+    /turbot/imu_angle_estimator/stop_magnetometer_calibration, /turbot/imu_angle_estimator/unfreeze_gyro_bias,
+    /turbot/laser_off, /turbot/laser_on, /turbot/lights_off, /turbot/lights_on, /turbot/master_discovery/list_masters,
+    /turbot/master_discovery/refresh, /turbot/master_sync/get_sync_info, /turbot/modem_off,
+    /turbot/modem_on, /turbot/navigator/reload_params, /turbot/navigator/reset_landmarks,
+    /turbot/navigator/reset_navigation, /turbot/navigator/set_depth_sensor_offset,
+    /turbot/pilot/reload_params, /turbot/sonar_off, /turbot/sonar_on, /turbot/teledyne_explorer_dvl/reload_params,
+    /turbot/teleoperation/reload_params, /turbot/teleoperation/set_joystick_axes_to_velocity,
+    /turbot/teleoperation/set_max_joy_velocity, /turbot/test_thrusters/test, /turbot/topic_logger/start_recording,
+    /xiroi/topic_logger/start_recording, /turbot/topic_logger/stop_recording, /xiroi/topic_logger/stop_recording,
+    /gs/topic_logger/start_recording, /gs/topic_logger/stop_recording, /turbot/controller/disable_thrusters_acoustic,
+    /turbot/control/disable_trajectory_acoustic, /turbot/controller/enable_thrusters_acoustic,
+    /turbot/laser_off_acoustic, /turbot/laser_on_acoustic, /turbot/lights_off_acoustic,
+    /turbot/lights_on_acoustic, /turbot/safety/recovery_action_acoustic, /turbot/sonar_off_acoustic,
+    /turbot/sonar_on_acoustic, /turbot/topic_logger/start_recording_acoustic, /turbot/topic_logger/stop_recording_acoustic,
+    /turbot/cola2_watchdog/reset_timeout_acoustic, /turbot/gs/cola2_watchdog/reset_timeout_acoustic,
+    /turbot/gs/controller/disable_thrusters_acoustic, /turbot/gs/controller/disable_trajectory_acoustic,
+    /turbot/gs/controller/enable_thrusters_acoustic, /turbot/gs/imu_angle_estimator/calibrate_magnetometer_acoustic,
+    /turbot/gs/laser_off_acoustic, /turbot/gs/laser_on_acoustic, /turbot/gs/lights_off_acoustic,
+    /turbot/gs/lights_on_acoustic, /turbot/gs/safety/recovery_action_acoustic, /turbot/gs/topic_logger/start_recording_acoustic,
+    /turbot/gs/topic_logger/stop_recording_acoustic]
+  sync_topics: [/tf, /tf_static, /turbot/navigator/usbl_ned, /turbot/teleoperation/ack,
+    /turbot/input_to_teleoperation/ack, /turbot/input_to_teleoperation/output, /turbot/joy,
+    /turbot/joy/set_feedback, /turbot/teleoperation/ack, /turbot/computer_logger_acoustic,
+    /turbot/emus_bms_acoustic, /turbot/nav_sts_acoustic, /turbot/thrusters_data_acoustic,
+    /turbot/gs/usbllong, /xiroi/usbllong, /xiroi/navigator/navigation, /xiroi/sensors/imu,
+    /xiroi/sensors/imu_raw, xiroi/sensors/imu_angle_estimator xiroi/sensors/imu_mag,
+    xiroi/sensors/imu_mag_calibrated, xiroi/sensors/imu_mag_filtered, xiroi/sensors/imu_mag_filtered_calibrated,
+    xiroi/sensors/imu_raw_calibrated, xiroi/sensors/imu_raw_driver, xiroi/sensors/imu_raw_filtered,
+    xiroi/sensors/imu_raw_filtered_calibrated, /xiroi/sensors/imu, /xiroi/sensors/imu_mag,
+    /xiroi/sensors/imu_mag_calibrated, /xiroi/sensors/imu_mag_filtered, /xiroi/sensors/imu_mag_filtered_calibrated,
+    /xiroi/sensors/imu_raw, /xiroi/sensors/imu_raw_calibrated, /xiroi/sensors/imu_raw_driver,
+    /xiroi/sensors/imu_raw_filtered, /xiroi/sensors/imu_raw_filtered_calibrated, /xiroi/imu/rpy/filtered,
+    /xiroi/imu/rpy/raw, /xiroi/imu_angle_estimator/imu, /turbot/gs/navigator/gps_usbl,
+    /turbot/gs/navigator/gps_usbl_diagnostics, /turbot/gs/modem_delayed, /turbot/modem_delayed,
+    /turbot/modem_delayed_acoustic, /turbot/gs/usbl_position/modem_delayed, /xiroi/usbl_position/modem_delayed,
+    /turbot/cola2_watchdog/elapsed_time_acoustic, /turbot/controller/thruster_setpoints_throttle_acoustic,
+    /turbot/navigator/navigation_throttle_acoustic, /turbot/vehicle_status/vehicle_status_acoustic,
+    /turbot/gs/elapsed_time_acoustic, /turbot/gs/nav_sts_acoustic, /turbot/gs/thrusters_data_acoustic,
+    /turbot/gs/vehicle_status_acoustic, /stereo_down/scaled_x2/disparity, /stereo_down/scaled_x2/left/camera_info,
+    /stereo_down/scaled_x2/left/class_2, /stereo_down/scaled_x2/right/camera_info]
+navigator:
+  alt: {enable: true, max_init_time: 30.0, min_frequency: 1.0, required_at_startup: true}
+  altitude:
+    ekf_alt:
+      base_link_frame: turbot/base_link
+      disabled_at_startup: false
+      frequency: 15
+      initial_estimate_covariance: [1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9]
+      map_frame: world_ned
+      odom0: dvl
+      odom0_config: [false, false, true, false, false, false, false, false, true,
+        false, false, false, false, false, false]
+      odom0_differential: false
+      odom0_queue_size: 10
+      odom0_relative: false
+      odom_frame: turbot/odom
+      pose0: visual
+      pose0_config: [false, false, true, false, false, false, false, false, false,
+        false, false, false, false, false, false]
+      pose0_differential: false
+      pose0_queue_size: 10
+      pose0_relative: false
+      pose1: echo
+      pose1_config: [false, false, true, false, false, false, false, false, false,
+        false, false, false, false, false, false]
+      pose1_differential: false
+      pose1_queue_size: 10
+      pose1_relative: false
+      process_noise_covariance: [0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0.03, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.04, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.015]
+      publish_tf: false
+      sensor_timeout: 0.1
+      transform_time_offset: 0.0
+      world_frame: turbot/base_link
+  declination_in_degrees: 1.35
+  depth: {enable: true, max_init_time: 30.0, min_frequency: 5.0, required_at_startup: true}
+  depth_covariance: 0.005
+  dvl: {enable: true, max_init_time: 30.0, min_frequency: 2.0, required_at_startup: false}
+  dvl_bottom_covariance: 0.005
+  dvl_max_v: 1.2
+  dvl_water_covariance: 0.03
+  ekf_map:
+    base_link_frame: turbot/base_link
+    disabled_at_startup: true
+    frequency: 25
+    imu0: imu
+    imu0_config: [false, false, false, true, true, true, false, false, false, true,
+      true, true, false, false, false]
+    imu0_differential: false
+    imu0_queue_size: 10
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true
+    initial_estimate_covariance: [1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9]
+    map_frame: world_ned
+    odom_frame: turbot/odom
+    pose0: depth_map
+    pose0_config: [false, false, true, false, false, false, false, false, false, false,
+      false, false, false, false, false]
+    pose0_differential: false
+    pose0_queue_size: 10
+    pose0_relative: false
+    pose1: gps
+    pose1_config: [true, true, false, false, false, false, false, false, false, false,
+      false, false, false, false, false]
+    pose1_differential: false
+    pose1_queue_size: 10
+    pose1_relative: false
+    pose2: modem
+    pose2_config: [true, true, false, false, false, false, false, false, false, false,
+      false, false, false, false, false]
+    pose2_differential: false
+    pose2_queue_size: 10
+    pose2_relative: false
+    process_noise_covariance: [0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0.03, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.05,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.025,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.04, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.015]
+    sensor_timeout: 0.1
+    transform_time_offset: 0.0
+    twist0: dvl
+    twist0_config: [false, false, false, false, false, false, true, true, true, false,
+      false, false, false, false, false]
+    twist0_differential: false
+    twist0_queue_size: 10
+    twist0_relative: false
+    twist1: vo
+    twist1_config: [false, false, false, false, false, false, true, true, true, true,
+      true, true, false, false, false]
+    twist1_differential: false
+    twist1_queue_size: 10
+    twist1_relative: false
+    world_frame: world_ned
+  ekf_odom:
+    base_link_frame: turbot/base_link
+    disabled_at_startup: false
+    frequency: 25
+    imu0: imu
+    imu0_config: [false, false, false, true, true, true, false, false, false, true,
+      true, true, false, false, false]
+    imu0_differential: false
+    imu0_queue_size: 10
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true
+    initial_estimate_covariance: [1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9]
+    map_frame: world_ned
+    odom_frame: turbot/odom
+    pose0: depth_odom
+    pose0_config: [false, false, true, false, false, false, false, false, false, false,
+      false, false, false, false, false]
+    pose0_differential: false
+    pose0_queue_size: 10
+    pose0_relative: false
+    process_noise_covariance: [0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0.03, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.05,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.025,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.04, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.015]
+    sensor_timeout: 0.1
+    transform_time_offset: 0.0
+    twist0: dvl
+    twist0_config: [false, false, false, false, false, false, true, true, true, false,
+      false, false, false, false, false]
+    twist0_differential: false
+    twist0_queue_size: 10
+    twist0_relative: false
+    twist1: vo
+    twist1_config: [false, false, false, false, false, false, true, true, true, true,
+      true, true, false, false, false]
+    twist1_differential: false
+    twist1_queue_size: 10
+    twist1_relative: false
+    world_frame: turbot/odom
+  gps: {enable: true, max_init_time: 30.0, min_frequency: 0.0, min_init_samples: 5.0,
+    required_at_startup: false}
+  gps_covariance: 10.0
+  gps_init_filter_size: 10
+  gps_max_ned_dist: 2000
+  gps_min_depth: 0.8
+  gps_only_for_init: false
+  imu: {enable: true, max_init_time: 30.0, min_frequency: 5.0, required_at_startup: true}
+  init_usbl_cov: 20.0
+  max_num_errors: 100
+  modem: {enable: true, max_init_time: 30.0, min_frequency: 0.0, required_at_startup: false}
+  modem_covariance: 4.0
+  nav_status: {places_dir: /home/user/turbot_ws/src/turbot_stack/cola2_turbot/config/places}
+  ned_latitude: 39.543785
+  ned_longitude: 2.37884166667
+  usbl_min_depth: 2.0
+  use_usbl_data: false
+  visual_odometry_covariance_xy: 0.008
+  visual_odometry_covariance_z: 0.05
+  vo: {enable: false, max_init_time: 30.0, min_frequency: 1.0, required_at_startup: false}
+nmea_gps:
+  frame_id: gps
+  serial_port: {baud_rate: 9600, char_size: 8, flow_control: NONE, parity: NONE, path: /dev/ttyS6,
+    stop_bits: 1, timeout: 10000}
+pilot:
+  anchor: {kp: 0.1, max_angle_error: 0.5, max_surge: 0.3, min_surge: -0.1, radius: 1.0}
+  goto: {max_angle_error: 0.3, max_surge: 0.5, surge_proportional_gain: 0.4}
+  los_cte: {delta: 4.5, distance_to_max_velocity: 3.0, max_surge_velocity: 0.35, min_surge_velocity: 0.05,
+    min_velocity_ratio: 0.05}
+recovery_actions:
+  emergency_surface_setpoints: [-0.3, 0.0, 0.0]
+  frame_id: turbot/base_link
+relay_board: {base_controller_rate: 10, base_frame: base_link, baud: 57600, port: /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A6008ip7-if00-port0,
+  rate: 50, sensorstate_rate: 10, timeout: 0.1, use_base_controller: false}
+robot_description: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- ===================================================================================\
+  \ -->\n<!-- |    This document was autogenerated by xacro from /home/user/turbot_ws/src/turbot_stack/turbot_description/urdf/payload.urdf.xacro\
+  \ | -->\n<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                \
+  \                 | -->\n<!-- ===================================================================================\
+  \ -->\n<robot name=\"sparus2\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\">\n\
+  \  <!-- Base link -->\n  <link name=\"turbot/base_link\">\n    <visual>\n      <origin\
+  \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <geometry>\n        <mesh filename=\"package://turbot_description/meshes/turbot.dae\"\
+  \ scale=\"1 1 1\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!-- Link -->\n\
+  \  <link name=\"turbot/gps\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+  0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+  0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+  \ Joint -->\n  <joint name=\"turbot/base_link_to_gps_joint\" type=\"fixed\">\n \
+  \   <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/gps\"/>\n    <origin\
+  \ rpy=\"0 0 0\" xyz=\"-0.39 0 -0.36\"/>\n  </joint>\n  <!-- Link -->\n  <link name=\"\
+  turbot/dvl\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n   \
+  \   <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"\
+  1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!-- Joint -->\n\
+  \  <joint name=\"turbot/base_link_to_dvl_joint\" type=\"fixed\">\n    <parent link=\"\
+  turbot/base_link\"/>\n    <child link=\"turbot/dvl\"/>\n    <origin rpy=\"3.14159265359\
+  \ 0 2.35619449019\" xyz=\"-0.4145 0 0.11\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+  \ name=\"turbot/dvl_altitude\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+  0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+  0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+  \ Joint -->\n  <joint name=\"turbot/dvl_to_dvl_altitude_joint\" type=\"fixed\">\n\
+  \    <parent link=\"turbot/dvl\"/>\n    <child link=\"turbot/dvl_altitude\"/>\n\
+  \    <origin rpy=\"0 1.57079632679 0\" xyz=\"0 0 0\"/>\n  </joint>\n  <!-- Link\
+  \ -->\n  <link name=\"turbot/imu\">\n    <inertial>\n      <origin rpy=\"0 0 0\"\
+  \ xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"\
+  0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+  \  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_imu_joint\" type=\"fixed\"\
+  >\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/imu\"/>\n \
+  \   <origin rpy=\"1.55422 0.0008727 1.806416\" xyz=\"0.36377 -0.02093 -0.08490\"\
+  />\n  </joint>\n  <!-- Link -->\n  <link name=\"turbot/imu_filter\">\n    <inertial>\n\
+  \      <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n    \
+  \  <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"\
+  />\n    </inertial>\n  </link>\n  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_imu_filter_joint\"\
+  \ type=\"fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/imu_filter\"\
+  />\n    <origin rpy=\"0 0 0\" xyz=\"0.36377 -0.02093 -0.0849\"/>\n  </joint>\n \
+  \ <!-- Link -->\n  <link name=\"turbot/pressure\">\n    <inertial>\n      <origin\
+  \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+  1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+  \  </link>\n  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_pressure_joint\"\
+  \ type=\"fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/pressure\"\
+  />\n    <origin rpy=\"0 0 0\" xyz=\"0.387 0 -0.033\"/>\n  </joint>\n  <!-- Link\
+  \ -->\n  <link name=\"turbot/depth\">\n    <inertial>\n      <origin rpy=\"0 0 0\"\
+  \ xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"\
+  0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+  \  <!-- Joint -->\n  <joint name=\"turbot/pressure_to_depth_joint\" type=\"fixed\"\
+  >\n    <parent link=\"turbot/pressure\"/>\n    <child link=\"turbot/depth\"/>\n\
+  \    <origin rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n  </joint>\n  <!-- Link -->\n  <link\
+  \ name=\"turbot/thruster_0\">\n    <inertial>\n      <origin rpy=\"0 0 0\" xyz=\"\
+  0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"0.0\" ixz=\"\
+  0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n  <!--\
+  \ Joint -->\n  <joint name=\"turbot/base_link_to_thruster_0_joint\" type=\"fixed\"\
+  >\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/thruster_0\"\
+  />\n    <origin rpy=\"0 0 0\" xyz=\"0 0 0.08\"/>\n  </joint>\n  <!-- Link -->\n\
+  \  <link name=\"turbot/thruster_1\">\n    <inertial>\n      <origin rpy=\"0 0 0\"\
+  \ xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"\
+  0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+  \  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_thruster_1_joint\" type=\"\
+  fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/thruster_1\"\
+  />\n    <origin rpy=\"0 0 3.14159265359\" xyz=\"-0.59 0.17 0\"/>\n  </joint>\n \
+  \ <!-- Link -->\n  <link name=\"turbot/thruster_2\">\n    <inertial>\n      <origin\
+  \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+  1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+  \  </link>\n  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_thruster_2_joint\"\
+  \ type=\"fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/thruster_2\"\
+  />\n    <origin rpy=\"0 0 3.14159265359\" xyz=\"-0.59 -0.17 0\"/>\n  </joint>\n\
+  \  <!-- Link -->\n  <link name=\"turbot/modem\">\n    <inertial>\n      <origin\
+  \ rpy=\"0 0 0\" xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"\
+  1.0\" ixy=\"0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n\
+  \  </link>\n  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_modem_joint\"\
+  \ type=\"fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/modem\"\
+  />\n    <origin rpy=\"0 0 0\" xyz=\"0.45 0 -0.13\"/>\n  </joint>\n  <!-- Link -->\n\
+  \  <link name=\"turbot/echosounder\">\n    <inertial>\n      <origin rpy=\"0 0 0\"\
+  \ xyz=\"0 0 0\"/>\n      <mass value=\"0.1\"/>\n      <inertia ixx=\"1.0\" ixy=\"\
+  0.0\" ixz=\"0.0\" iyy=\"1.0\" iyz=\"0.0\" izz=\"1.0\"/>\n    </inertial>\n  </link>\n\
+  \  <!-- Joint -->\n  <joint name=\"turbot/base_link_to_echosounder_joint\" type=\"\
+  fixed\">\n    <parent link=\"turbot/base_link\"/>\n    <child link=\"turbot/echosounder\"\
+  />\n    <origin rpy=\"0 0 0\" xyz=\"0.65 0 0.10\"/>\n  </joint>\n  <!-- Stereo down-->\n\
+  \  <!-- <xacro:add_to_base_link_no_mesh element=\"stereo_stick\">\n    <origin rpy=\"\
+  0 0 0\" xyz=\"0.75 0 0.08\"/>\n  </xacro:add_to_base_link_no_mesh>\n\n  <xacro:add_element_no_mesh\
+  \ element=\"stereo_down/base\" parent=\"stereo_stick\">\n      <origin rpy=\"1.57\
+  \ 0.0 1.57 \" xyz=\"0 0 0\"/>\n    </xacro:add_element_no_mesh>\n\n  <xacro:add_element_no_mesh\
+  \ element=\"stereo_down\" parent=\"stereo_down/base\">\n    <origin rpy=\"-1.57\
+  \ 0 0\" xyz=\"0 0 0\"/>\n  </xacro:add_element_no_mesh>\n\n  <xacro:add_element_no_mesh\
+  \ element=\"stereo_down/left_optical\" parent=\"stereo_down\">\n    <origin rpy=\"\
+  0 0 0\" xyz=\"-0.06 0 0\"/>\n  </xacro:add_element_no_mesh> -->\n  <!-- Multibeam\
+  \ Example -->\n  <!--<xacro:add_to_base_link_no_mesh element=\"multibeam\">\n  \
+  \  <origin rpy=\"0 -${pi/2} ${pi}\" xyz=\"0.5 0 0\"/>\n  </xacro:add_to_base_link_no_mesh>-->\n\
+  \  <!-- Side Scan Example -->\n  <!--<xacro:add_to_base_link_no_mesh element=\"\
+  sidescan_port\">\n    <origin rpy=\"${pi/4} 0 0\" xyz=\"0.22 -0.10129 0.05386\"\
+  />\n  </xacro:add_to_base_link_no_mesh>\n  <xacro:add_to_base_link_no_mesh element=\"\
+  sidescan_starbord\">\n    <origin rpy=\"-${pi/4} 0 0\" xyz=\"0.22 0.10129 0.05386\"\
+  />\n  </xacro:add_to_base_link_no_mesh>-->\n</robot>\n\n"
+rosapi: {params_glob: '[*]', services_glob: '[*]', topics_glob: '[*]'}
+rosbridge_tcp: {authenticate: false, bson_only_mode: false, delay_between_messages: 0,
+  fragment_timeout: 600, host: '', incoming_buffer: 65536, max_message_size: None,
+  params_glob: '[*]', port: 9091, retry_startup_delay: 5, services_glob: '[*]', socket_timeout: 10,
+  topics_glob: '[*]', unregister_timeout: 10}
+rosbridge_websocket: {address: '', authenticate: false, bson_only_mode: false, delay_between_messages: 0,
+  fragment_timeout: 600, max_message_size: None, params_glob: '[*]', port: 8888, retry_startup_delay: 5,
+  services_glob: '[*]', topics_glob: '[*]', unregister_timeout: 10}
+safe_depth_altitude: {max_depth: 20.0, min_altitude: 0.5}
+safety:
+  max_temperatures_values: [55.0, 90.0, 95.0]
+  min_altitude_update: 60.0
+  min_battery_charge: 2.0
+  min_battery_voltage: 26.4
+  min_depth_update: 10.0
+  min_dvl_good_data: 20
+  min_dvl_update: 10.0
+  min_gps_update: 30.0
+  min_imu_update: 10.0
+  min_modem_update: 300
+  min_nav_update: 2.0
+  min_wifi_update: 60.0
+  timeout: 1800
+  usbl_safety_always_on: false
+sensor_aggregator: {sensors_safety: false}
+sensors:
+  usbl: {covariance: 15.0, crs: ned, integrity_min: 90, rssi_max: -10, rssi_min: -85,
+    sync_disp_th: 5.0, sync_prop_th: 0.5, sync_time_th: 1.0}
+set_zero_velocity:
+  set_zero_velocity_axis:
+  - [false, false, true, true, true, true]
+  - [true, true, false, true, true, true]
+  - [true, true, true, true, true, false]
+  set_zero_velocity_depth: 1.5
+teledyne_explorer_dvl:
+  bottom_covariance: [0.002, 0.002, 0.002]
+  bottom_track_pings_per_ensemble: '1'
+  coordinate_transformation: '01111'
+  data_stream_select: '6'
+  environmental_data_output: '0000010'
+  evaluation_amplitude_minimum: '024'
+  flow_control: '11010'
+  frame_id: dvl
+  heading_alignment: '+00000'
+  heading_bias: '+00000'
+  maximum_tracking_depth: '00200'
+  retrieve_parameters: '0'
+  salinity: '35'
+  save_to_sensor_memory: false
+  sensor_source: '00000000'
+  sensor_source_override_for_doppler_parameters: 0 0 0 0 0 0 0 0
+  serial_port: {baud_rate: 115200, char_size: 8, flow_control: NONE, parity: NONE,
+    path: /dev/ttyS5, stop_bits: 1, timeout: 3000}
+  serial_port_control: '811'
+  sound_speed: 1500
+  temperature: '1000'
+  time_between_pings: '00:00.00'
+  time_per_ensemble: '00:00:00.00'
+  transducer_depth: '00001'
+  water_covariance: [0.1, 0.1, 0.1]
+  water_mass_layer_mode: '1'
+  water_mass_layer_parameters: 0001,0010,0070
+teleoperation:
+  actualize_base_pose: true
+  base_pose: [0, 0, 0, 0, 0, 0]
+  max_pos: [10.0, 10.0, 2.0, 3.14159265359, 3.14159265359, 3.14159265359]
+  max_vel: [0.6, 0.0, 0.2, 0.0, 0.0, 0.3]
+  min_pos: [-10.0, -10.0, -2.0, -3.14159265359, -3.14159265359, -3.14159265359]
+  min_vel: [-0.3, -0.0, -0.3, 0.0, 0.0, -0.3]
+  pose_controlled_axis: [false, false, false, false, false, false]
+topic_logger:
+  dir: /storage
+  image_topics: [/stereo_down/left/camera_info /stereo_down/left/image_raw /stereo_down/right/camera_info
+      /stereo_down/right/image_raw /stereo_down/scaled_x2/left/segmented /stereo_down/scaled_x2/left/class_2
+      /stereo_down/scaled_x2/seg_pointcloud]
+  topics: [/tf /tf_static /turbot/client_count /turbot/nmea_gps/data /turbot/adis_imu/data
+      /turbot/adis_imu/data_fast /turbot/adis_imu/depth /turbot/adis_imu/depth_fast
+      /turbot/adis_imu/fluid_pressure /turbot/adis_imu/fluid_pressure_fast /turbot/adis_imu/imu_data_fast
+      /turbot/adis_imu/mag_data_fast /turbot/imu_angle_estimator/imu_info /turbot/batteries/status
+      /turbot/batteries_cylinder/humidity /turbot/batteries_cylinder/pressure /turbot/batteries_cylinder/temperature
+      /turbot/batteries_cylinder/water_detected /turbot/captain/captain_status /turbot/captain/mission_status
+      /turbot/captain/trajectory_path /turbot/cola2_watchdog/elapsed_time /turbot/computer_logger/cpu_usage
+      /turbot/computer_logger/ram_usage /turbot/computer_logger/temperature /turbot/controller/body_velocity_req
+      /turbot/controller/fins_data /turbot/controller/merged_body_force_req /turbot/controller/merged_body_force_req_throttle
+      /turbot/controller/merged_body_velocity_req /turbot/controller/merged_body_velocity_req_throttle
+      /turbot/controller/merged_world_waypoint_req /turbot/controller/merged_world_waypoint_req_throttle
+      /turbot/controller/parameter_descriptions /turbot/controller/parameter_updates
+      /turbot/controller/thruster_setpoints /turbot/controller/thruster_setpoints_throttle
+      /turbot/controller/world_waypoint_req /turbot/diagnostics /turbot/diagnostics_agg
+      /turbot/diagnostics_toplevel_state /turbot/dynamics/altitude /turbot/dynamics/current
+      /turbot/dynamics/odometry /turbot/dynamics/pose_overwrite /turbot/input_to_teleoperation/ack
+      /turbot/input_to_teleoperation/output /turbot/joint_states /turbot/joy /turbot/master_discovery/changes
+      /turbot/master_discovery/linkstats /turbot/navigator/altitude_raw /turbot/navigator/altitude_filtered
+      /turbot/navigator/gps_ned /turbot/navigator/gps_raw /turbot/navigator/imu /turbot/navigator/imu_raw
+      /turbot/navigator/landmarks /turbot/navigator/markers/landmarks /turbot/navigator/markers/range_update
+      /turbot/modem_raw /turbot/navigator/navigation /turbot/navigator/navigation_throttle
+      /turbot/navigator/odometry /turbot/navigator/odometry_throttle /turbot/navigator/usbl_ned
+      /turbot/param_logger/params_string /turbot/pc_cylinder/humidity /turbot/pc_cylinder/pressure
+      /turbot/pc_cylinder/temperature /turbot/pc_cylinder/water_detected /turbot/pilot/goal
+      /turbot/pilot/waypoint_marker /turbot/pilot/world_section_req/cancel /turbot/pilot/world_section_req/feedback
+      /turbot/pilot/world_section_req/goal /turbot/pilot/world_section_req/result
+      /turbot/pilot/world_section_req/status /turbot/pilot/world_waypoint_req/cancel
+      /turbot/pilot/world_waypoint_req/feedback /turbot/pilot/world_waypoint_req/goal
+      /turbot/pilot/world_waypoint_req/result /turbot/pilot/world_waypoint_req/status
+      /turbot/recovery_actions/external_recovery_action /turbot/safe_depth_altitude/parameter_descriptions
+      /turbot/safe_depth_altitude/parameter_updates /turbot/safety_supervisor/status
+      /turbot/teledyne_explorer_dvl/altitude /turbot/teledyne_explorer_dvl/data /turbot/teledyne_explorer_dvl/dvl
+      /turbot/teledyne_explorer_dvl/sound_speed /turbot/teleoperation/ack /turbot/valeport_sound_velocity/temperature
+      /turbot/vehicle_status /turbot/virtual_cage/markers/cage /turbot/virtual_cage/parameter_descriptions
+      /turbot/virtual_cage/parameter_updates /turbot/actuators/thrusters_info /turbot/visual_altimeter/altitude
+      /turbot/gs/navigator/gps_usbl /turbot/imagenex_echosounder/altitude_raw /turbot/imagenex_echosounder/altitude_filtered
+      /turbot/navigator/ekf_odom/odometry /turbot/navigator/ekf_map/odometry /turbot/cola2_watchdog/elapsed_time_acoustic
+      /turbot/controller/thruster_setpoints_throttle_acoustic /turbot/cola2_watchdog/elapsed_time_acoustic
+      /turbot/navigator/navigation_throttle_acoustic /turbot/vehicle_status/vehicle_status_acoustic
+      /xiroi/usbllong /xiroi/navigator/navigation /xiroi/sensors/imu /xiroi/sensors/imu_raw
+      xiroi/sensors/imu_angle_estimator xiroi/sensors/imu_mag xiroi/sensors/imu_mag_calibrated
+      xiroi/sensors/imu_mag_filtered xiroi/sensors/imu_mag_filtered_calibrated xiroi/sensors/imu_raw_calibrated
+      xiroi/sensors/imu_raw_driver xiroi/sensors/imu_raw_filtered xiroi/sensors/imu_raw_filtered_calibrated
+      /turbot/navigator/imu /turbot/navigator/imu_raw /xiroi/sensors/imu /xiroi/sensors/imu_mag
+      /xiroi/sensors/imu_mag_calibrated /xiroi/sensors/imu_mag_filtered /xiroi/sensors/imu_mag_filtered_calibrated
+      /xiroi/sensors/imu_raw /xiroi/sensors/imu_raw_calibrated /xiroi/sensors/imu_raw_driver
+      /xiroi/sensors/imu_raw_filtered /xiroi/sensors/imu_raw_filtered_calibrated /xiroi/imu/rpy/filtered
+      /xiroi/imu/rpy/raw /xiroi/imu_angle_estimator/imu /turbot/modem_delayed /turbot/modem_delayed_acoustic
+      /xiroi/usbl_position/modem_delayed /turbot/evologics_channel /turbot/computer_logger_acoustic
+      /turbot/emus_bms_acoustic /turbot/emus_bms/battery_state /turbot/emus_bms/emus_bms
+      /turbot/gs/evologics_channel /turbot/gs/evologics_sync /turbot/nav_sts_acoustic
+      /turbot/thrusters_data_acoustic /turbot/gs/usbllong /turbot/gs/navigator/gps_usbl
+      /turbot/gs/navigator/gps_usbl_diagnostics /turbot/gs/modem_delayed /turbot/gs/usbl_position/modem_delayed
+      /turbot/replan/target_area /map_estimation/samples /turbot/navigator/altitude
+      /turbot/navigator/altitude/dvl /turbot/navigator/altitude/echo /turbot/navigator/altitude/ekf_alt/odometry
+      /turbot/navigator/altitude/set_pose /turbot/navigator/altitude/visual /turbot/navigator/altitude_raw
+      /turbot/safe_depth_altitude/parameter_descriptions /turbot/safe_depth_altitude/parameter_updates
+      /turbot/teledyne_explorer_dvl/altitude /turbot/visual_altimeter/altitude /turbot/imagenex_echosounder_down/data_bytes_raw
+      /turbot/imagenex_echosounder_down/profile_range_filtered /turbot/imagenex_echosounder_down/profile_range_raw
+      /turbot/imagenex_echosounder_down/profile_rx_raw /turbot/imagenex_echosounder_down/profile_rx_raw_float
+      /turbot/navigator/altitude/echo]
+vehicle_status_parser:
+  altitude_data_age: [/navigation/navigator, last_altitude_data]
+  battery_charge: [/safety/emus_bms, charge]
+  battery_voltage: [/safety/emus_bms, voltage]
+  depth_data_age: [/navigation/navigator, last_depth_data]
+  dvl_data_age: [/navigation/navigator, last_dvl_data]
+  dvl_valid_data_age: [/navigation/navigator, last_good_data]
+  gps_data_age: [/navigation/navigator, last_gps_data]
+  imu_data_age: [/navigation/navigator, last_imu_data]
+  inside_virtual_cage: [/safety/virtual_cage, inside_virtual_cage]
+  modem_data_age: [/safety/evologics_modem, last_modem_data]
+  navigation_data_age: [/safety/vehicle_status_parser, last_nav_data]
+  temperature:
+  - [/safety/emus_bms, max_cell_temperature]
+  - [/safety/computer_logger, cpu_temperature]
+  - [/safety/battery_control_board, battery_housing_temperature]
+  temperature_name: [batteries, cpu, main_housing]
+  thrusters_enabled: [/control/controller, thruster_allocator_enabled]
+  vehicle_initialized: [/navigation/navigator, ekf_init]
+  water:
+  - [/safety/battery_control_board, water_inside_detected]
+  - [/safety/s2_mon_control_board, water_inside]
+  wifi_data_age: [/control/teleoperation, last_ack]
+virtual_cage: {calls_keep_position: true, east_longitude: 200.0, east_origin: -100.0,
+  enabled: true, north_longitude: 200.0, north_origin: -100.0}
